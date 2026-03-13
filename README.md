@@ -1,110 +1,98 @@
-# Instagram Home Feed Flutter Clone
+# Instagram Clone
 
-Production-quality Flutter project that replicates Instagram Home Feed UI with clean architecture, smooth interactions, shimmer loading states, and pagination.
+A Flutter Instagram Home Feed clone with clean architecture, smooth interactions, and interview-ready code quality.
 
-## Project Overview
+## Overview
 
-This app is designed for technical interview evaluation and demonstrates:
+This project focuses on a polished Instagram-like feed experience:
 
-- Pixel-focused Instagram-like feed UI
-- Clean architecture with clear separation of concerns
-- Provider-based state management
-- Smooth carousel and pinch-to-zoom media interactions
-- Infinite feed pagination with delayed mock API
-- Shimmer loading placeholders for a polished loading experience
+- Dark-mode Instagram-style UI
+- Stories tray with gradient rings
+- Feed posts with actions, caption, and likes
+- Local like/save toggles
+- Shimmer loading state
+- Infinite scroll pagination
+- Cached network images with fallbacks
 
-## Features Implemented
+## Tech Stack
 
-- Instagram-style top bar:
-	- Instagram wordmark style title
-	- Notifications icon
-	- Messages icon
-- Stories tray:
-	- Horizontal scroll
-	- Circular avatars
-	- Gradient story borders
-- Post feed:
-	- User header with avatar, username, and more options icon
-	- Single image and carousel media posts
-	- Dot indicator synchronized with carousel index
-	- Like, comment, share, save action row
-	- Caption and likes count area
-- Interaction behavior:
-	- Like and save toggle locally
-	- Comment/share show Snackbar with message: Feature coming soon
-	- Pinch-to-zoom media with smooth animated reset
-- Data and loading:
-	- Repository-driven post loading (no UI hardcoded data)
-	- Simulated network delay: 1500ms per page
-	- Shimmer loading skeletons for stories and post cards
-- Infinite scroll:
-	- Loads next page near feed bottom
-	- 10 posts per page
-	- Appends smoothly without list jumps
-- Robust media handling:
-	- Cached network images
-	- Placeholder while loading
-	- Fallback UI on image load failure
+- Flutter (stable)
+- Provider (state management)
+- cached_network_image
+- shimmer
+- flutter_svg
 
-## State Management (Provider)
+## Project Structure
 
-`PostProvider` is responsible for:
-
-- Initial feed bootstrap
-- Pagination state (`isLoadingMore`, `hasMore`, page index)
-- Local interaction state (`isLiked`, `isSaved`, `currentMediaIndex`)
-- Refresh flow
-
-UI widgets are kept presentation-focused and delegate mutation logic to provider methods.
-
-## Folder Architecture
-
+```text
 lib/
 ├── models/
+│   ├── app_constants.dart
 │   ├── post_model.dart
 │   └── user_model.dart
 ├── providers/
 │   └── post_provider.dart
 ├── repositories/
+│   ├── api_service.dart
 │   └── post_repository.dart
 ├── screens/
 │   └── home_screen.dart
-├── services/
-│   └── api_service.dart
-├── utils/
-│   └── constants.dart
 ├── widgets/
+│   ├── instagram_bottom_navigation.dart
+│   ├── instagram_svg_icon.dart
 │   ├── post_actions.dart
 │   ├── post_card.dart
 │   ├── shimmer_loader.dart
 │   ├── story_item.dart
 │   └── story_list.dart
 └── main.dart
+```
 
-## Dependencies
+## Architecture Notes
 
-- provider
-- shimmer
-- cached_network_image
+- `repositories/` handles data and mocked API behavior.
+- `providers/` manages UI state and business events.
+- `widgets/` contains reusable presentation components.
+- `screens/` composes page-level UI.
+- `models/` contains entities and shared constants.
 
-## How To Run
+## Key Features
 
-1. Ensure Flutter stable SDK is installed.
-2. Install dependencies:
+1. Top bar with Instagram-style layout and icon set
+2. Stories list with circular avatars and gradient borders
+3. Post cards with:
+   - Header (profile, username, audio row)
+   - Single image or carousel media
+   - Action row (like/comment/repost/send/save)
+   - Caption and likes section
+4. Pinch-to-zoom for media with smooth reset animation
+5. Pagination (10 posts per page) with delayed mock API (`1500ms`)
+6. Shimmer skeletons while loading
 
-	 flutter pub get
+## Run Locally
 
-3. Run the app:
+1. Install Flutter stable SDK
+2. Get packages:
 
-	 flutter run
+```bash
+flutter pub get
+```
 
-## Demo Instructions
+3. Run app:
 
-1. Launch app and wait for shimmer placeholders.
-2. Verify story tray horizontal scrolling.
-3. Scroll feed and observe post cards.
-4. Swipe carousel posts and verify indicator changes.
-5. Pinch an image to zoom and release to see smooth reset animation.
-6. Tap like/save icons to validate local toggle states.
-7. Tap comment/share to view Feature coming soon Snackbar.
-8. Scroll near feed end to trigger automatic next-page load.
+```bash
+flutter run
+```
+
+## Demo Checklist
+
+1. Open app and verify shimmer placeholders
+2. Scroll stories horizontally
+3. Scroll feed and observe pagination
+4. Swipe carousel posts and check dot indicator
+5. Test like/save toggles
+6. Tap comment/share/repost icons and check Snackbar behavior
+
+## App Name
+
+The app display name is set to **Instagram Clone** on Android, iOS, and Web.
